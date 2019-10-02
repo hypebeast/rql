@@ -1,7 +1,7 @@
 {
-  "name": "rql",
-  "version": "0.3.3",
-  "author": "Kris Zyp",
+  "name": "forked-rql",
+  "version": "0.3.4",
+  "author": "Sebastian Ruml",
   "contributors": [
     "Vladimir Dronnikov <dronnikov@gmail.com>"
   ],
@@ -26,18 +26,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/kriszyp/rql"
+    "url": "https://github.com/hypebeast/rql"
   },
   "maintainers": [
     {
       "name": "Kris Zyp",
       "email": "kriszyp@gmail.com"
+    },
+    {
+      "name": "Sebastian Ruml",
+      "email": "sebastian.ruml@gmail.com"
     }
   ],
-  "mappings": {
-    "patr": "http://github.com/kriszyp/patr/zipball/v0.2.1",
-    "promised-io": "http://github.com/kriszyp/promised-io/zipball/v0.2.1"
-  },
   "dependencies": {
     "promised-io": ">=0.3.0"
   },

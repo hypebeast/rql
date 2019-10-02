@@ -1,4 +1,12 @@
-[![Build Status](https://travis-ci.org/persvr/rql.svg?branch=master)](https://travis-ci.org/persvr/rql)
+# forked-rql
+
+This is a fork of [persvr/rql](https://github.com/persvr/rql) library from [persvr](http://www.persvr.org/).
+
+## Why forked
+
+The currently released version 0.3.3 contains a bug in the parser code. This bug is already fixed in the master branch, but no release exists for the fixed version. Therefore, the library was forked and the latest version was published to npmjs.com.
+
+## RQL
 
 Resource Query Language (RQL) is a query language designed for use in URIs with object
 style data structures. This project includes the RQL specification and
@@ -22,7 +30,7 @@ Such that this can be used in URIs like:
 
     http://example.org/data?foo=3
 
-# JavaScript Library
+## JavaScript Library
 
 Using the JavaScript library we can construct queries
 using chained operator calls in JavaScript. We could execute the query above like this:
