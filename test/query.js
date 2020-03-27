@@ -16,6 +16,7 @@ define(function (require) {
 				'a((b),c)': { name: 'and', args: [{ name: 'a', args: [ [ 'b' ], 'c' ]}]},
 				'a((b,c),d)': { name: 'and', args: [{ name: 'a', args: [ [ 'b', 'c' ], 'd' ]}]},
 				'a(b/c,d)': { name: 'and', args: [{ name: 'a', args: [ [ 'b', 'c' ], 'd' ]}]},
+				'a(b/c,ü)': {name: 'and', args: [{name: 'a', args: [['b', 'c'], 'ü']}]},
 				'a(b)&c(d(e))': { name: 'and', args:[
 					{ name: 'a', args: [ 'b' ]},
 					{ name: 'c', args: [ { name: 'd', args: [ 'e' ]} ]}
@@ -23,6 +24,7 @@ define(function (require) {
 			},
 			'dot-comparison': {
 				'foo.bar=3': { name: 'and', args: [{ name: 'eq', args: [ 'foo.bar', 3 ]}]},
+				'foo.bar=Ü': { name: 'and', args: [{name: 'eq', args: ['foo.bar', 'Ü']}]},
 				'select(sub.name)': {
 					name: 'and',
 					args: [ { name: 'select', args: [ 'sub.name' ]} ],
@@ -31,12 +33,16 @@ define(function (require) {
 			},
 			equality: {
 				'eq(a,b)': { name: 'and', args:[{ name: 'eq', args: [ 'a', 'b' ]}]},
+				'eq(a,ß)': { name: 'and', args: [{name: 'eq', args: ['a', 'ß']}]},
 				'a=eq=b': 'eq(a,b)',
+				'a=eq=ß': 'eq(a,ß)',
 				'a=b': 'eq(a,b)'
 			},
 			inequality: {
 				'ne(a,b)': { name: 'and', args: [{ name: 'ne', args: [ 'a', 'b' ]}]},
+				'ne(a,ü)': {name: 'and', args: [{ name: 'ne', args: ['a', 'ü'] }]},
 				'a=ne=b': 'ne(a,b)',
+				'a=ne=ä': 'ne(a,ä)',
 				'a!=b': 'ne(a,b)'
 			},
 			'less-than': {
@@ -68,7 +74,8 @@ define(function (require) {
 			},
 			'arbitrary FIQL desugaring': {
 				'a=b=c': { name: 'and', args: [{ name: 'b', args: [ 'a', 'c' ]}]},
-				'a(b=cd=e)': { name: 'and', args: [{ name: 'a', args: [{ name: 'cd', args: [ 'b', 'e' ]}]}]}
+				'a(b=cd=e)': { name: 'and', args: [{ name: 'a', args: [{ name: 'cd', args: [ 'b', 'e' ]}]}]},
+				'a(b=cd=å)': { name: 'and', args: [{ name: 'a', args: [{ name: 'cd', args: [ 'b', 'å' ]}]}]}
 			},
 			'and grouping': {
 				'a&b&c': { name: 'and', args: [ 'a', 'b', 'c' ]},
@@ -90,7 +97,8 @@ define(function (require) {
 			'string coercion': {
 				'a(string)': { name: 'and', args: [{ name: 'a', args: [ 'string' ]}]},
 				'a(string:b)': { name: 'and', args: [{ name: 'a', args: [ 'b' ]}]},
-				'a(string:1)': { name: 'and', args: [{ name: 'a', args: [ '1' ]}]}
+				'a(string:1)': { name: 'and', args: [{ name: 'a', args: [ '1' ]}]},
+				'a(string:ö)': {name: 'and', args: [{name: 'a', args: ['ö']}]}
 			},
 			'number coercion': {
 				'a(number)': { name: 'and', args: [{ name: 'a', args: [ 'number' ]}]},
